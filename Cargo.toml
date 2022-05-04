@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "client",
+    "schema",
+    "server",
+]
+resolver = "2"
