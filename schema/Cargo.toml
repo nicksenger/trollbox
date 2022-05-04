@@ -1,0 +1,15 @@
+[package]
+name = "schema"
+version = "0.1.0"
+authors = ["Nick Senger <dev@nsenger.com>"]
+edition = "2021"
+
+[dependencies]
+chrono = "0.4"
+prost = "0.10"
+prost-types = "0.10"
+tonic = "0.7"
+uuid = { version = "1.0", features = ["v4", "fast-rng"] }
+
+[build-dependencies]
+tonic-build = "0.7"
