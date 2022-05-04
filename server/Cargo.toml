@@ -1,0 +1,19 @@
+[package]
+name = "server"
+version = "0.1.0"
+authors = ["Nick Senger <dev@nsenger.com>"]
+edition = "2021"
+
+[dependencies]
+async-mutex = "1.4"
+futures = "0.3"
+schema = { path = "../schema" }
+tokio = { version = "1.18", features = ["macros", "rt-multi-thread"] }
+tokio-stream = "0.1"
+tonic = "0.7"
+uuid = { version = "1.0", features = ["v4", "fast-rng"] }
+
+
+[[bin]]
+name = "server"
+path = "src/main.rs"
