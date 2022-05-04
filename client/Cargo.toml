@@ -1,0 +1,21 @@
+[package]
+name = "client"
+version = "0.1.0"
+authors = ["Nick Senger <dev@nsenger.com>"]
+edition = "2021"
+publish = false
+
+[features]
+# Point to the local server
+local = []
+# Debug various things if they break that I don't really want to focus on
+debug = []
+
+[dependencies]
+futures = "0.3"
+iced = { version = "0.4", features = ["glow", "pure", "tokio"] }
+iced_native = "0.5"
+iced_pure = "0.2"
+schema = { path = "../schema" }
+tokio = "1.18"
+tonic = "0.7"
