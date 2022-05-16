@@ -35,8 +35,7 @@ impl Client {
         async move {
             let response = client
                 .send_message(SendMessageRequest {
-                    alias: std::env::var("TROLLBOX_USERNAME")
-                        .unwrap_or_else(|_| "Anonymous".to_string()),
+                    alias: std::env::var("ALIAS").unwrap_or_else(|_| "Anonymous".to_string()),
                     message: text,
                 })
                 .await;
