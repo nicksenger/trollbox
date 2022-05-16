@@ -1,5 +1,6 @@
 use chrono::{DateTime, Local, TimeZone};
 use std::time::{SystemTime, UNIX_EPOCH};
+use uuid::Uuid;
 
 pub use gen::trollbox;
 
@@ -9,6 +10,7 @@ mod gen {
 
 #[derive(Clone, Debug)]
 pub struct Message {
+    pub id: Uuid,
     pub alias: String,
     pub text: String,
     pub sent_at: DateTime<Local>,
@@ -22,6 +24,7 @@ impl From<trollbox::Message> for Message {
             .expect("missing timestamp");
 
         Message {
+            id: Uuid::parse_str(&message.id).expect("bad uuid"),
             alias: message.alias,
             text: message.text,
             sent_at: Local.timestamp(seconds, nanos),
@@ -32,6 +35,7 @@ impl From<trollbox::Message> for Message {
 impl From<Message> for trollbox::Message {
     fn from(message: Message) -> Self {
         trollbox::Message {
+            id: message.id.to_string(),
             alias: message.alias,
             text: message.text,
             timestamp: Some(prost_types::Timestamp {
@@ -60,6 +64,7 @@ impl TryFrom<trollbox::SendMessageRequest> for Message {
             Err(SendMessageError::AliasTooLong)
         } else {
             Ok(Message {
+                id: Uuid::new_v4(),
                 alias: request.alias,
                 text: request.message,
                 sent_at: Local.timestamp(timestamp.as_secs() as i64, timestamp.subsec_nanos()),

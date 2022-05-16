@@ -9,6 +9,7 @@ chrono = "0.4"
 prost = "0.10"
 prost-types = "0.10"
 tonic = "0.7"
+uuid = "1.0"
 
 [build-dependencies]
 tonic-build = "0.7"

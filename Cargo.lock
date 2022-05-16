@@ -2053,6 +2053,7 @@ dependencies = [
  "prost-types",
  "tonic",
  "tonic-build",
+ "uuid",
 ]
 
 [[package]]
