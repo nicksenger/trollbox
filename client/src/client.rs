@@ -11,10 +11,7 @@ use crate::Message;
 
 const RECONNECT_DELAY: Duration = Duration::from_secs(5);
 
-#[cfg(feature = "local")]
 const SERVER_ADDRESS: &str = "http://[::0]:50051";
-#[cfg(not(feature = "local"))]
-const SERVER_ADDRESS: &str = "http://137.184.212.135:50051";
 
 #[derive(Clone, Debug)]
 pub struct Client {
